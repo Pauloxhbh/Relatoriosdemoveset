@@ -119,7 +119,7 @@
 <body>
 
   <header>
-    <img src="https://i.imgur.com/BmftwqF.png" alt="Logo Pokémon" />
+    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/master-ball.png" alt="Logo Pokémon" />
     <h1>Relatório de Moveset</h1>
   </header>
 
@@ -134,11 +134,11 @@
   </form>
 
   <div class="animation">
-    <img src="https://i.imgur.com/6NDtXkN.png" alt="Pokémon animado" />
+    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png" alt="Pokémon animado" />
   </div>
 
   <footer>
-    <img src="https://i.imgur.com/BmftwqF.png" alt="Logo Rodapé" />
+    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/master-ball.png" alt="Logo Rodapé" />
   </footer>
 
   <audio id="pokeSound" src="https://vgmsite.com/soundtracks/pokemon-gba-sound-collection/zmrzunxk/101%20Opening.mp3"></audio>
@@ -151,7 +151,7 @@
     // Criar chuva de pokébolas
     for (let i = 0; i < 15; i++) {
       let ball = document.createElement("img");
-      ball.src = "https://upload.wikimedia.org/wikipedia/commons/5/53/Poké_Ball_icon.svg";
+      ball.src = "https://upload.wikimedia.org/wikipedia/commons/5/53/Pok%C3%A9_Ball_icon.svg";
       ball.className = "pokeball";
       ball.style.left = Math.random() * 100 + "vw";
       ball.style.animationDelay = Math.random() * 5 + "s";
@@ -159,5 +159,6 @@
       document.body.appendChild(ball);
     }
   </script>
+
 </body>
 </html>
