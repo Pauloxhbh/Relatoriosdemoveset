@@ -1,127 +1,107 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Relatório de Moveset</title>
   <style>
     body {
-      background: linear-gradient(#141e30, #243b55);
-      font-family: 'Segoe UI', sans-serif;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin: 0;
-    }
-
-    header img {
-      margin-top: 20px;
-      width: 150px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px white;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #fdf6e3, #fff);
+      text-align: center;
+      padding: 30px;
     }
 
     h1 {
-      margin-top: 10px;
-      font-size: 2rem;
-      color: #ffcc00;
+      color: #e63946;
+      font-size: 2.5em;
     }
 
     form {
-      background: rgba(0, 0, 0, 0.6);
-      padding: 20px 30px;
-      border-radius: 15px;
-      box-shadow: 0 0 10px #ffcc00;
-      margin-top: 20px;
-      width: 300px;
+      background-color: #fff;
+      border: 2px solid #e63946;
+      border-radius: 10px;
+      padding: 30px;
+      max-width: 400px;
+      margin: 0 auto;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     }
 
-    label {
+    input, textarea, button {
       display: block;
-      margin-top: 10px;
-      font-weight: bold;
-    }
-
-    input[type="text"] {
       width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border: none;
-      border-radius: 5px;
+      margin-bottom: 20px;
+      padding: 12px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1em;
     }
 
     button {
-      margin-top: 20px;
-      width: 100%;
-      background-color: #ffcc00;
-      color: black;
-      font-weight: bold;
-      padding: 10px;
-      border: none;
-      border-radius: 10px;
+      background-color: #e63946;
+      color: white;
       cursor: pointer;
-      transition: 0.3s;
+      transition: background-color 0.3s;
     }
 
     button:hover {
-      background-color: #ffaa00;
+      background-color: #d62828;
     }
 
-    footer img {
-      margin-top: 40px;
+    .logo-container img {
       width: 120px;
-      border-radius: 10px;
+      margin: 10px;
     }
 
-    .animation {
-      margin-top: 30px;
+    .pokeball {
+      position: absolute;
+      top: -100px;
+      width: 30px;
+      animation: fall 5s infinite linear;
     }
 
-    .animation img {
-      width: 80px;
-      animation: float 2s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(0);
+    @keyframes fall {
+      0% {
+        top: -50px;
+        transform: rotate(0deg);
       }
-      50% {
-        transform: translateY(-15px);
+      100% {
+        top: 100%;
+        transform: rotate(360deg);
       }
     }
   </style>
 </head>
 <body>
-  <header>
-    <img src="https://i.imgur.com/BmftwqF.png" alt="Logo Pokémon">
-    <h1>Relatório de Moveset</h1>
-  </header>
 
-  <form action="https://api.sheetmonkey.io/form/kMt7EMAf5RLhRDEnaR27DG" method="POST" onsubmit="playSound()">
-    <label for="pokemon">Pokémon:</label>
-    <input type="text" id="pokemon" name="Pokemon" required>
-
-    <label for="nickname">Nickname:</label>
-    <input type="text" id="nickname" name="Nickname" required>
-
-    <button type="submit">Enviar Relatório</button>
-  </form>
-
-  <div class="animation">
-    <img src="https://i.imgur.com/6NDtXkN.png" alt="Pokémon animado">
+  <div class="logo-container">
+    <img src="https://i.imgur.com/6NDtXkN.png" alt="Logo Pokémon 1" />
+    <img src="https://i.imgur.com/BmftwqF.png" alt="Logo Pokémon 2" />
   </div>
 
-  <footer>
-    <img src="https://i.imgur.com/BmftwqF.png" alt="Logo Rodapé">
-  </footer>
+  <h1>Relatório de Moveset</h1>
 
-  <audio id="pokeSound" src="https://vgmsite.com/soundtracks/pokemon-gba-sound-collection/mwtkjuzr/101%20Opening.mp3"></audio>
+  <form action="https://api.sheetmonkey.io/form/kMt7EMAf5RLhRDEnaR27DG" method="post">
+    <input type="text" name="Pokemon" placeholder="Nome do Pokémon" required />
+    <input type="text" name="Nickname" placeholder="Nickname do Player" required />
+    <button type="submit" onclick="playSound()">Enviar</button>
+  </form>
+
+  <audio id="pokeSound" src="https://vgmsite.com/soundtracks/pokemon-gba-sound-collection/zmrzunxk/101%20Opening.mp3"></audio>
 
   <script>
     function playSound() {
       document.getElementById("pokeSound").play();
+    }
+
+    // Criar pokeballs animadas
+    for (let i = 0; i < 10; i++) {
+      let ball = document.createElement("img");
+      ball.src = "https://upload.wikimedia.org/wikipedia/commons/5/53/Poké_Ball_icon.svg";
+      ball.classList.add("pokeball");
+      ball.style.left = Math.random() * 100 + "vw";
+      ball.style.animationDelay = Math.random() * 5 + "s";
+      document.body.appendChild(ball);
     }
   </script>
 </body>
